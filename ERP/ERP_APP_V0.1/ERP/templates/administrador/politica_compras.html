@@ -1,0 +1,272 @@
+<!--Juan-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Logistico Grupo Coomeva</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/politica_compras.css') }}">
+    <script defer src="{{ url_for('static', filename='js/admin')}}"></script>
+    <!--libreria tabla-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir DataTables JS desde CDN -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body class="aplicacion_movimientos_inventario">
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>Politicas de Compras de Inventario EOQ</h1>
+    </section>
+    <!-- creamos el contendor de registro de moevientos del invetario y el hostrial de estos -->
+    <section class="contendor_modulo_super_admin">
+
+        
+        <div class="calculo_politica_compras"> <!--se usa este en caso de uq halla un erro en un registro-->
+
+            <h2>Politica de Compras (EOQ y PR)</h2> 
+            <form method="post">
+
+                <label>Codigo articulo:</label> <!--no se puede editar ni codigo ni nobre del articulo ni categria ni sub actegoria ya que esto en la creacion de regsitro se seleccionan autmaticanmente cunaodo el axiliar pone el cosigo del articulo-->
+                <select id="articulo">
+                    <option value=""><p>---</p></option>
+                    
+                </select>
+
+                <label for="H_">Costo Almacenamiento Medio por Unidad Mensual (H)::</label>
+                <input type="text" name="nuevo_valor" id="nuevo_valor">
+
+                <input class="boton" type="button"  value="Calcular Politica">
+            </form>
+
+        </div>
+
+        <div id="definicion_politicas">
+            <h2>Grafica EOQ de la Politica</h2>
+            <img  class="img_grfica" src="{{ url_for('static', filename='img/EOQ.jfif') }}" alt="">
+            <p id="texto_politica">
+                Para el artículo <strong>____</strong> con código <strong>_____</strong>, se define una política de compra 
+                donde la cantidad óptima de pedido es <strong>"________"</strong>, el punto para realizar un pedido 
+                es <strong>"________"</strong>, el plazo máximo de entrega que debe tener su proveedor 
+                es <strong>"________"</strong> días, y el inventario medio disponible debe estar 
+                en <strong>"__________"</strong>.
+            </p>
+            <form method="post">
+                <input class="boton" type="button" id="boton_politica" value="Crear Politica">
+            </form>
+        </div>
+    </section>
+
+    <hr>
+    <h2 class="titulo_tabla_movimeintos">Politica de Compras para cada Articulo</h2>
+
+    <section class="contendor_tabla_moviminetos">
+        <div class="grupo_tabla_moviminetos">
+            <div class="tabla_moviminetos">
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Id Politica</th>
+                            <th>Codigo Articilo</th>
+                            <th>Articulos</th>
+                            <th>Cantidad Optima de Pedido</th>
+                            <th>Punto de Pedido</th>
+                            <th>Inventario Medio Disponible</th>
+                            <th>Plazo Maximo de Entrega</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--los valores de tbody se gragan de manera dinamica haciendo consultas a la base de datos-->
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr> 
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr> 
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr> 
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr> 
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            // Inicializa DataTables sobre la tabla
+            $('.tabla_moviminetos table').DataTable({
+                "paging": true,   // Activa la paginación
+                "ordering": true, // Activa el ordenamiento de columnas
+                "info": true,     // Muestra información sobre la tabla
+                "searching": true // Activa el buscador
+            });
+        });
+    </script>
+</body>
+</html>

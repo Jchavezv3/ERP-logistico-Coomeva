@@ -1,0 +1,82 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+body {
+    background: url(../../img/Sede-Nacional-Coomeva.webp);
+    background-size: cover;
+}
+
+.contenedor_login {
+    height: 100%;
+    width: 100%;
+    position: absolute; /*ponemos el contendor fijo*/
+    background-color: rgba(0, 0, 0, 0.445);
+    top: 0%;
+}
+
+.login_formualario {
+    top: 17%;
+    left: 23%;
+    background-color: #5ece31;
+    position: absolute;
+    height: 400px;
+    width: 700px;
+    border-radius: 20px;
+    color: white;
+}
+
+.login_formualario>img {
+    top: 25%;
+    right: 25px;
+    position: absolute;
+    border-radius: 20px;
+    height: 150px;
+}
+
+.login_formualario>h1 {
+    position: absolute;
+    font-size: 15px;
+    width: 300px;
+    font-weight: 600;
+    top: 15%;
+    left: 6%;
+}
+
+
+.login_formualario>form {
+    display: flex;
+    flex-direction: column; /* Esta regla CSS establece que los elementos directos (form) dentro de los elementos (div) dentro del contenedor con la clase "contenedor_panelAdmin" se organicen en una columna. Esto significa que los elementos dentro del formulario se apilen uno encima del otro. (es como una especie de display block) */
+    gap: 15px;
+    width: 300px;
+    margin-top: 15%;
+    margin-left: 6%;
+}
+
+input {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px
+}
+
+#iniciar_seccion {
+    margin-top: 20px;
+    background-color: #258c00;
+    font-size: 20px;
+    width: 300px;
+    color: white;
+    cursor: pointer;
+}
+
+#iniciar_seccion:hover {
+    background-color: #a8da95;
+    color: #0d3100;
+}
+
+h2 {
+    color: red;
+    margin-left: 80px;
+    margin-top: 20px;
+    font-size: 15px;
+}

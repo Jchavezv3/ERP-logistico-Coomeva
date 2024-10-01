@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Logistico Grupo Coomeva</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/admin.css') }}">
+    <script defer src="#"></script>
+</head>
+<body class="aplicacion_panel_administrador">
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>ERP Logistico Grupo Coomeva</h1>
+    </section>
+    <!--Creamos la sesión que contendrá los diferentes módulos y estos se crean también como grupos de elementos-->
+    <section class="contenedor_de_módulos">
+
+        <!--Grupo de elementos creado para un módulo-->
+        <div class="Registro_de_usuarios">
+            <img src="{{ url_for('static', filename='img/Registro_de_usuarios.jpg') }}" alt="Registro de usuarios">
+            <p>Registro de usuarios</p>
+            <a href="{{url_for('admin.registro_empleados')}}" class="button-link"><button name="registro_de_usuarios">IR</button></a>
+        </div>
+
+        <div class="Base_de_datos_del_inventario">
+            <img src="{{ url_for('static', filename='img/Base_de_datos_inventario.jpg') }}" alt="Base de datos del inventario">
+            <p>Base de datos del inventario</p>
+            <a href="{{url_for('analista.base_datos')}}" class="button-link"><button name="base_de_datos_del_inventario">IR</button></a>
+        </div>
+
+        <div class="Entradas_y_salidas">
+            <img src="{{ url_for('static', filename='img/Entradas_salidas.jpg') }}" alt="Entradas y salidas">
+            <p>Entradas y salidas</p>
+            <a href="{{url_for('aunxiliar.movimientos_inventario')}}" class="button-link"><button name="entradas_y_salidas">IR</button></a>
+        </div>
+
+        <div class="Registro_de_nuevo_inventario">
+            <img src="{{ url_for('static', filename='img/Registro_nuevo_inventario.jpg') }}" alt="Registro de nuevo inventario">
+            <p>Registro de nuevo inventario</p>
+            <a href="{{url_for('admin.nuevo_inventario')}}" class="button-link"><button name="registro_de_nuevo_inventario">IR</button></a>
+        </div>
+
+        <div class="politica_compras">
+            <img src="{{ url_for('static', filename='img/politica_compras.png') }}" alt="politica de compras">
+            <p>Politica de Compras</p>
+            <a href="{{url_for('admin.politicas_inventario')}}" class="button-link"><button name="politica_compras">IR</button></a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+</body>
+</html>

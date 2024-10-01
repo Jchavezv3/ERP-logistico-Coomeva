@@ -1,0 +1,302 @@
+<!--Edier-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de nuevo inventario</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/registro_nuevo_inventario.css') }}">
+    <script defer src="{{ url_for('static', filename='js/admin/crudNuevosArticulos.js') }}"></script>
+
+    <!--libreria tabla-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir DataTables JS desde CDN -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="aplicacion_registro_nuevo_inventario">
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>Registro de Nuevo Inventario</h1>
+    </section>
+    <section class="contendor_registro_de_productos">
+        <div class="registro_articulo">
+             <!--Creamos el formulario-->
+             <h2>Registro de nuevo inventario</h2>
+            <form method="post">
+
+                <label for="Codigo">Codigo</label>
+                <input type="text" id="Codigo" name="codigo" placeholder="Codigo"/>
+          
+                <label for="Categoría">Categoría</label>
+                <input type="text" id="Categoría" name="categoría" placeholder="Categoría"/>
+
+                <label for="Subcategoría">Subcategoría</label>
+                <input type="text" id="Subcategoría" name="subcategoría" placeholder="Subcategoría"/>
+
+                <label for="Artículo">Artículo</label>
+                <input type="text" id="Artículo" name="artículo" placeholder="Artículo"/>
+
+                <label for="alerta_amarilla">Alerta Amarilla</label>
+                <input type="number" id="alerta_amarilla" name="alerta_amarilla" placeholder="numero unidades"/>
+
+                <label for="alerta_roja">Alerta Roja</label>
+                <input type="number" id="alerta_roja" name="alerta_roja" placeholder="numero unidades"/>
+
+                <input class="boton" type="button" id="crear_articulo" value="crear articulo">   
+            </form>
+        </div>
+
+        <div class="editar_articulo">
+            <!--Creamos el formulario-->
+            <h2>Edición de inventario</h2>
+           <form method="PUT">
+               <label for="Código_artículo">Código artículo</label>
+               <input type="text" id="Código_artículo" name="codigo_articulo" placeholder="Código artículo"/>
+               <br/>
+               <label>Atributo a Editar:</label> <!--no se puede editar ni codigo ni nobre del articulo ni categria ni sub actegoria ya que esto en la creacion de regsitro se seleccionan autmaticanmente cunaodo el axiliar pone el cosigo del articulo-->
+                <select id="edicion_atributo">
+                    <option value="">---</option>
+                    <option value="codigo">Codigo</option>
+                    <option value="categoria">Categoría</option>
+                    <option value="subcategoria">Subcategoría</option>
+                    <option value="articulo">Nombre del artículo</option>
+                    <option value="alerta_amarilla">alerta amarilla</option>
+                    <option value="alerta_roja">alerta_roja</option>
+                </select>
+                <br/>
+
+                <label for="nuevo_valor">Nuevo Valor:</label>
+                <input type="text" name="nuevo_valor" id="nuevo_valor">
+
+                <input class="boton" type="button" id="editar_articulo" value="Editar articulo"> 
+           </form>
+       </div>
+
+       <div class="eliminar_articulo">
+            <h2>Eliminar artículo</h2>
+            <form method="DELETE">
+                <label for="id_articulo">Codigo del artículo:</label>
+                <input type="text" name="codigo_articulo" id="codigo_articulo">
+
+                <input class="boton" type="button" id="eliminar_articulo" value="Eliminar articulo">
+
+            </form>
+        </div>
+
+    </section>
+
+    <hr>
+    <h2 class="tabla_de_productos_creados_titulo">Productos creados: </h2>
+
+    <section class="contendor_tabla_productos_creados">
+        <div class="grupo_productos_creados">
+            <div class="tabla_productos_creados">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Código</th>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Artículo</th>
+                            <th>Alerta Amarilla</th>
+                            <th>Alerta Roja</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--los valores de tbody se agregan de manera dinamica haciendo consultas a la base de datos-->
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            // Inicializa DataTables sobre la tabla
+            $('.tabla_productos_creados table').DataTable({
+                "paging": true,   // Activa la paginación
+                "ordering": true, // Activa el ordenamiento de columnas
+                "info": true,     // Muestra información sobre la tabla
+                "searching": true // Activa el buscador
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

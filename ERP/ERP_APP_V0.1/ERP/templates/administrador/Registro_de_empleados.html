@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Logistico Grupo Coomeva</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/registro_empleado.css') }}">
+    <script defer src="{{ url_for('static', filename='js/admin/crudEmpleados.js') }}"></script>
+</head>
+<body class="aplicacion_registro_empleado">
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>Regristro de Colaboradores</h1>
+    </section>
+    <!--creamos la seccion para registra los empleados-->
+    <section class="contendor_registro_empleados">
+        <div class="creacion_empleados">
+            <h2>Ingrese la informacion del colaborador a regitrar</h2>
+            <form method="POST">
+                <label for="nombres">Nombres:</label>
+                <input type="text" name="nombres" placeholder="ingrese los nombres del empleado" id="nombres" min="4" required max="20">
+    
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" name="apellidos" placeholder="ingrese los apellidos del empleado" id="apellidos" min="4" required max="20">
+    
+                <label for="cedula">Cedula:</label>
+                <input type="text" name="cedula" placeholder="ingrese la cedula del empleado" id="cedula" required min="4" min="7" max="10">
+    
+                <label for="cargo">Cargo:</label>
+                <input type="text" name="cargo" placeholder="ingrese el cargo del empleado" id="cargo" required min="4" max="30">
+    
+                <label for="correo">Correo:</label>
+                <input type="email" name="correo" placeholder="ingrese el correo del empleado" id="correo" required min="10" max="50">
+
+                <label for="clave">clave:</label>
+                <input type="password" name="clave" id="clave" required>
+    
+                <input class="boton" type="button" id="regritar_empleado" value="Registrar Empleado" required>
+            </form>
+        </div>
+
+        <div class="edicion_empleado">
+            <h2>Actualizar Datos del Empleado</h2>
+            <form method="PUT">
+                <label for="id_empleado">ID del Empleado:</label>
+                <input type="number" name="id_empleado" id="id_empleado" required>
+
+                <label>Atributo a Editar:</label> 
+                <select id="edicion_atributo">
+                    <option value=""><p>---</p></option>
+                    <option value="nombres">nombres</option>
+                    <option value="apellidos">apellidos</option>
+                    <option value="cedula">cedula</option>
+                    <option value="cargo">cargo</option>
+                    <option value="correo">correo</option>
+                    <option value="clave">clave</option>
+                </select>
+
+                <label for="nuevo_valor_empleado">Nuevo Valor:</label>
+                <input type="text" name="nuevo_valor_empleado" id="nuevo_valor_empleado" required>
+
+                <input class="boton" type="button" id="editar_empleado" value="Editar Datos Empleado">
+            </form>
+        </div>
+
+        <div class="eliminar_empleado">
+            <h2>Eliminar empleado</h2>
+            <form method="DELETE">
+                <label for="id_empleado">ID del Empleado:</label>
+                <input type="number" name="id_empleado" id="id_empleado_eliminar" required>
+
+                <input class="boton" type="button" id="eliminar_empleado" value="Eliminar Empleado">
+
+            </form>
+        </div>
+
+    </section>
+    <hr>
+    <h2 class="titulo_equipo_trabajo">Equipo de Trabajo</h2>
+    <!--creamos la seccion donde mostraremos lo empleados que ya estan creados-->
+    <section class="contendor_empleados">
+        <!--creamos los grupos empleado estos seran agrgados mas adlente de manera dinamica con js-->
+
+    </section>
+
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Logistico Grupo Coomeva</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/analista/analista.css') }}">
+    <script defer src="#"></script>
+    <!--libreria tabla-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir DataTables JS desde CDN -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="aplicacion_analitica_inventario">
+
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>Base de datos del inventario</h1>
+    </section>
+    <h2 class="titulo_tabla_inventario">Control de Exitencias del Inventario Grupo Coomeva</h2>
+    <input type="date" name="fecha_registro_movimiento" id="fecha_registro"> <!-- esta fecha la mostraremos de manera dinamica con js para que el auxiliar pueda consultar los movinetos de ese dia-->
+    <!-- creamos el contendor de la tabla de inventario -->
+    <section class="contendor_tabla_inventario">
+
+        <div class="caja_gren_tabla_inventario">
+            <div class="tabla_inventario">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Categoría</th>
+                            <th>Subcategoría</th>
+                            <th>Artículo</th>
+                            <th>Entradas
+                                <select id="orden_entradas">
+                                    <option>---</option>
+                                    <option>De mayor a menor</option> 
+                                    <option>De menor a mayor</option> 
+                                </select>
+                            </th>
+                            <th>Salidas
+                                <select id="orden_salidas">
+                                    <option>---</option>
+                                    <option>De mayor a menor</option> 
+                                    <option>De menor a mayor</option>
+                                </select>
+                            </th>
+                            <th>Total de Unidades <!--a esta seccion se le programara un semafro de alerta que define el admin para saber cundo pedir inventario-->
+                                <select id="orden_unidades">
+                                    <option>---</option>
+                                    <option>De mayor a menor</option> 
+                                    <option>De menor a mayor</option>
+                                </select>
+                            </th>
+                            <th>Alerta Amrilla
+                                <select id="orden_alerta_amarilla">
+                                    <option>---</option>
+                                    <option>Activas</option> 
+                                    <option>Inactivas</option>
+                                </select>
+                            </th>
+                            <th>Alerta Roja
+                                <select id="orden_alerta_Roja">
+                                    <option>---</option>
+                                    <option>Activas</option> 
+                                    <option>Inactivas</option>
+                                </select>
+                            </th>
+                            <th>Plazo Entrega
+                                <select id="orden_plazo">
+                                    <option>---</option>
+                                    <option>De mayor a menor</option> 
+                                    <option>De menor a mayor</option>
+                                </select>
+                            </th>
+                            <th>Total de Costo
+                                <select id="orden_costo">
+                                    <option>---</option>
+                                    <option>De mayor a menor</option> 
+                                    <option>De menor a mayor</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--los elentos de tbody se gragaran dinamicamente con js haciendo consutas al backend-->
+                        <tr>
+                            <td>001</td>
+                            <td>Electrónica</td>
+                            <td>Teléfonos</td>
+                            <td>iPhone 13</td>
+                            <td>100</td>
+                            <td>50</td>
+                            <td>50</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>20</td>
+                            <td>$50,000</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Electrónica</td>
+                            <td>Computadoras</td>
+                            <td>MacBook Pro</td>
+                            <td>30</td>
+                            <td>10</td>
+                            <td>20</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>20</td>
+                            <td>$40,000</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>  
+
+    <hr>
+    <h2 class="titilo_grficas_seccion">Reportes del Inventario</h2>
+
+    <section class="contenedor_reportes">
+        <!--este se genera por categoria sub categoria o articulo esos son los filtros-->
+        <div class="grafico_barras_entradas_salidas">
+            <h2>Grafica de entradas y salidas de <span class="filtro_grfico_barras">articulos</span></h2> <!--el span se mdofica segun el filtro del user-->
+            <img src="{{ url_for('static', filename='img/esto_se_remplazara/grafica-de-barras-especies-salvajes-en-peligro-de-extincion-en-el-mundo.png') }}" alt="">
+            <!--las graficas se agragaran con js css y html cundo termine la etapa de maquetacion-->
+        </div>
+
+        <!--este muestra los % o cnatidas de distribucion de inventrio-->
+        <div class="grafico_torta_inventario">
+            <h2>Distribucion porcentual del inventario por  <span class="filtro_grfico_barras">articulos</span></h2> <!--el span se mdofica segun el filtro del user-->
+            <img src="{{ url_for('static', filename='img/esto_se_remplazara/GUID-7447E72F-C8AD-4E53-93D7-98A24219F900-web.png') }}" alt="">
+            <!--las graficas se agragaran con js css y html cundo termine la etapa de maquetacion-->
+        </div>
+
+        <!--este muestra el comportamiento de la entradas y salaidas atravez de los mese años o dias de un articulo x categoria x o subcategoria x-->
+        <div class="grafico_lineas_entradas_salidad_tiempo">
+            <h2>Comportamiento entradas y salidas en el tiempo de <span class="filtro_grfico_barras">articulo x</span></h2> <!--el span se mdofica segun el filtro del user-->
+            <img src="{{ url_for('static', filename='img/esto_se_remplazara/power-bi-line-chart.png') }}" alt="">
+            <!--las graficas se agragaran con js css y html cundo termine la etapa de maquetacion-->
+        </div>
+
+        <!--este muestra como esta distribuido a lo largo de tiempo el costo del inventario por categorias sub categorias o articulos-->
+        <div class="grafico_area_costo">
+            <h2>Grafico de area costo del inventario por <span class="filtro_grfico_barras">articulos</span></h2> <!--el span se mdofica segun el filtro del user-->
+            <img src="{{ url_for('static', filename='img/esto_se_remplazara/power-bi-chart-example.png') }}" alt="">
+            <!--las graficas se agragaran con js css y html cundo termine la etapa de maquetacion-->
+        </div>
+
+    </section>
+    <div class="imprimir_informe">
+        <p>Generar e imprimir informe</p>
+        <input class="boton" type="button" id="imprimir_informe" value="imprimir_informe">
+    </div>
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            // Inicializa DataTables sobre la tabla
+            $('.tabla_inventario table').DataTable({
+                "paging": true,   // Activa la paginación
+                "ordering": true, // Activa el ordenamiento de columnas
+                "info": true,     // Muestra información sobre la tabla
+                "searching": true // Activa el buscador
+            });
+        });
+    </script>
+</body>
+</html>

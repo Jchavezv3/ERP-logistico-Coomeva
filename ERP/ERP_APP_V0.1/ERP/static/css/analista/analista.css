@@ -1,0 +1,259 @@
+/*--------------------------------------------------------------------------------*/
+/*-------------PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-----------------*/
+/*--------------------------------------------------------------------------------*/
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+header {
+    position: absolute;
+    display: flex; 
+    align-items: center; 
+    padding: 10px; 
+}
+
+header>a>img {
+    height: 50px;
+    margin-left: 20px;
+}
+
+header>h1 {
+    color: white;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header>a>h2 {
+    color: white;
+    position: absolute;
+    right: -1020px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+header>a>h2:hover {
+    color: rgb(228, 228, 228);
+}
+
+.slider {
+    background-color: #5ece31;
+    background-image: url(../../img/simple-header-blended-small.png);
+    height: 350px;
+    background-size: cover;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.slider>h1 {
+    color: white;
+    font-size: 80px;
+    width: 1000px;
+}
+
+footer {
+    height: 70px;
+    background-color: #5ece31;
+    color: white;
+    display: flex; /* Hacemos que el contenedor use flexbox */
+    align-items: center; /* Centramos verticalmente */
+}
+
+footer>p {
+    margin-left: 100px;
+    font-weight: 700;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*-------------FIN PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-------------*/
+/*--------------------------------------------------------------------------------*/
+
+.titulo_tabla_inventario {
+    margin: 55px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d3100;
+    font-size: 28px;
+}
+
+input {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px;
+}
+
+#fecha_registro {
+    border: 1px solid #0d3100;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+/*---------------------------------------------------------------------------------*/
+/*------------------------------ESTILOS DE LA TABLA--------------------------------*/
+/*---------------------------------------------------------------------------------*/
+.caja_gren_tabla_inventario {
+    background-color: #5ece31;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabla_inventario {
+    max-height: 450px;
+    max-width: 1200px;
+    overflow-y: auto; /* Cambiado de scroll a auto */
+    overflow-x: auto; /* Cambiado de scroll a auto */
+    padding-right: 15px; /* Espacio extra para la barra de desplazamiento vertical */
+    padding-bottom: 15px; /* Espacio extra para la barra de desplazamiento horizontal */
+    box-sizing: content-box; /* Asegura que el padding no afecte al tamaño de la caja */
+}
+
+.tabla_inventario::-webkit-scrollbar {
+    width: 10px; /* Cambia el ancho del scroll */
+    height: 10px; /* Cambia la altura del scroll horizontal */
+}
+
+/* Parte de la barra de desplazamiento */
+.tabla_inventario::-webkit-scrollbar-thumb {
+    background-color: green; /* Color de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Parte de la pista de la barra de desplazamiento */
+.tabla_inventario::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de la pista de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+table {
+    width: 100%; /* Cambiado de un valor fijo a 100% */
+    border: 1px solid #0d3100;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-collapse: collapse;
+    table-layout: auto; /* Ajusta automáticamente el ancho de las columnas */
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #79af64;
+    color: white;
+    white-space: nowrap; /* Evita el ajuste de texto */
+}
+
+td {
+    color: rgb(128, 128, 128);
+    font-size: 15px;
+    white-space: nowrap; /* Evita el ajuste de texto */
+}
+
+td:hover {
+    color: #0d3100;
+}
+
+table>thead>tr>th>select {
+    width: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(232, 255, 223);
+}
+
+tr:hover {
+    background-color: #97d87d;
+    cursor: pointer; 
+}
+/*---------------------------------------------------------------------------------*/
+/*----------------------------FIN ESTILOS DE LA TABLA------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+hr {
+    margin: 55px;
+    margin-bottom: 30px;
+    background-color: #0d310079;
+}
+
+.titilo_grficas_seccion {
+    margin: 55px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d3100;
+    font-size: 28px;
+}
+
+.contenedor_reportes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.contenedor_reportes>div {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    background-color: #5ece31;
+    border-radius: 20px;
+    color: white;
+    width: 600px;
+    height: 450px;
+}
+
+.contenedor_reportes>div:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.925);
+}
+
+.contenedor_reportes>div>h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5%;
+    margin-left: 50px;
+}
+
+.contenedor_reportes>div>img {
+    width: 524px;
+    height: 340px;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-left: 42px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.imprimir_informe {
+    margin: 55px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d3100;
+    font-size: 28px;
+}
+
+#imprimir_informe {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px;
+    margin-top: 15px;
+    background-color: #258c00;
+    font-size: 20px;
+    width: 300px;
+    color: white;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+#imprimir_informe:hover {
+    background-color: #a8da95;
+    color: #0d3100;
+}

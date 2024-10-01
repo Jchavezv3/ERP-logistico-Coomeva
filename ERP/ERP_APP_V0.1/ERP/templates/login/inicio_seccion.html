@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ERP Logistico Grupo Coomeva</title>
+        <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login/login.css') }}">
+        <script defer src="#"></script>
+    </head>
+<body class="aplicacion_login">
+    <section class="contenedor_login">
+        <div class="login_formualario">
+            <img src="{{ url_for('static', filename='img/coomeva_blanco.png') }}" alt="coomeva">
+            <h1>SISTEMA DE GESTION DE INVENTARIOS COOMEVA</h1>
+            <form method="post">
+                <label for="correo">Ingrese su Correo:</label>
+                <input type="email" name="correo" id="correo_login" placeholder="correo@ejemplo.com" required>
+
+                <label for="contraseña">Ingrese su Clave</label>
+                <input type="password" name="clave" id="contraseña_login" required>
+
+                
+                <input type="submit" id="iniciar_seccion" value="iniciar seccion">
+
+            </form>
+            <h2>{{ error }}</h2>
+        </div>
+    </section>
+    
+</body>
+</html>

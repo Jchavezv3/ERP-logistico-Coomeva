@@ -1,0 +1,301 @@
+<!--Juan-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--se modifica el título de la sesión del head y se le agrega el icono de Coomeva-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Logistico Grupo Coomeva</title>
+    <Link rel="icon" href="{{ url_for('static', filename='img/Icono_Coomeva.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aunxiliar/aunxiliar.css') }}">
+    <script defer src="{{ url_for('static', filename='js/aunxiliar_logistico/crudMovimientos.js')}}"></script>
+    <!--libreria tabla-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir DataTables JS desde CDN -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="aplicacion_movimientos_inventario">
+    <!--Creamos la sesión header-->
+    <header>
+        <a href="{{url_for('admin.panel_admin')}}"><img src="{{ url_for('static', filename='img/Logo_Coomeva_header.png') }}" alt="logo Coomeva"></a>
+        <h1>Administrador</h1>
+        <a href="{{url_for('auth.logout')}}"><h2>cerrar seccion</h2></a>
+    </header>
+    <!--Creamos la sesión Slider-->
+    <section class="slider">
+        <h1>Entradas y Salidas de Inventario</h1>
+    </section>
+    <!-- creamos el contendor de registro de moevientos del invetario y el hostrial de estos -->
+    <section class="contendor_movimeintso_inventario">
+
+        <div class="registro_movimeintos">
+
+            <h2>Registro de Movimientos</h2>
+            <form method="post">
+                <label for="codigo_articulo">Codigo:</label>
+                <input type="number" name="codigo_articulo" id="codigo_articulo">
+
+                <label for="costo_articulo">Costo:</label>
+                <input type="number" name="costo_articulo" id="categoria_articulo">
+
+                <label for="fecha_movimiento">Fecha:</label>
+                <input type="date" name="fecha_movimiento" id="fecha_movimiento">
+
+                <label for="cantidad_articulos">Cantidad de Articulos:</label>
+                <input type="number" name="cantidad_articulos" id="cantidad_articulos">
+
+                <label>Tipo de movimiento:</label>
+                <select id="tipo_movimeinto">
+                    <option value=""><p>---</p></option>
+                    <option value="entrada">Entrada</option>
+                    <option value="salida">Salida</option>
+                </select>
+
+                <input class="boton" type="button" id="regritar_movimiento" value="Registrar movimiento">
+            </form>
+        </div>
+
+        <div class="edicion_movimeintos"> <!--se usa este en caso de uq halla un erro en un registro-->
+
+            <h2>Edicion de Movimientos</h2> 
+            <form method="put">
+                <label for="id_movimiento">ID Movimeinto:</label>
+                    <input type="number" name="id_movimiento" id="id_movimiento">
+
+                <label>Atributo a Editar:</label> <!--no se puede editar ni codigo ni nobre del articulo ni categria ni sub actegoria ya que esto en la creacion de regsitro se seleccionan autmaticanmente cunaodo el axiliar pone el cosigo del articulo-->
+                <select id="edicion_atributo">
+                    <option value=""><p>---</p></option>
+                    <option value="codigo_articulo">codigo</option>
+                    <option value="costo_articulo">costo</option>
+                    <option value="fecha_movimiento">fecha</option>
+                    <option value="cantidad_articulos">cantidad de articulos</option>
+                    <option value="tipo_movimeinto">tipo de movimiento</option>
+                </select>
+
+                <label for="nuevo_valor">Nuevo Valor:</label>
+                <input type="text" name="nuevo_valor" id="nuevo_valor">
+
+                <input class="boton" type="button" id="editar_movimiento" value="Editar movimiento">
+            </form>
+
+        </div>
+
+        <!--Esta sección de eliminar movimientos solo será visible por el administrador ya que es el unico autorizado para eliminar entradas o salidas, esta funcionalidad se hara con JS-->
+        <div class="eliminar_movimiento">
+            <h2>Eliminar movimiento</h2>
+            <form method="delete">
+                <label for="id_movimiento">ID del movimiento:</label>
+                <input type="number" name="id_movimiento" id="id_movimiento">
+
+                <input class="boton" type="button" id="eliminar_movimiento" value="Eliminar movimiento">
+
+            </form>
+        </div>
+
+    </section>
+
+    <hr>
+    <h2 class="titulo_tabla_movimeintos">Historial de movimientos de la fecha: </h2>
+    <input type="date" name="fecha_registro_movimiento" id="fecha_registro_movimiento"> <!-- esta fecha la mostraremos de manera dinamica con js para que el auxiliar pueda consultar los movinetos de ese dia-->
+
+    <section class="contendor_tabla_moviminetos">
+        <div class="grupo_tabla_moviminetos">
+            <div class="tabla_moviminetos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID de Movimientos</th>
+                            <th>Articulos</th>
+                            <th>Codigo Articilo</th>
+                            <th>Categoria</th>
+                            <th>subcategoria</th>
+                            <th>Tipo Movimeinto</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Id Registrador</th>
+                            <th>Editado</th>
+                            <th>Id Editor</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--los valores de tbody se gragan de manera dinamica haciendo consultas a la base de datos-->
+                        <tr>
+                            <td>1</td>
+                            <td>Producto A</td>
+                            <td>categria A</td>
+                            <td>subcategoria A</td>
+                            <td>1</td>
+                            <td>Entrada</td>
+                            <td>100</td>
+                            <td>$50</td>
+                            <td>23</td>
+                            <td>No</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Producto B</td>
+                            <td>categria B</td>
+                            <td>subcategoria B</td>
+                            <td>1</td>
+                            <td>Entrada</td>
+                            <td>50</td>
+                            <td>$30</td>
+                            <td>23</td>
+                            <td>Si</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Producto C</td>
+                            <td>categria C</td>
+                            <td>subcategoria C</td>
+                            <td>1</td>
+                            <td>Entrada</td>
+                            <td>200</td>
+                            <td>$100</td>
+                            <td>23</td>
+                            <td>No</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>By Grupo Coomeva</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            // Inicializa DataTables sobre la tabla
+            $('.tabla_moviminetos table').DataTable({
+                "paging": true,   // Activa la paginación
+                "ordering": true, // Activa el ordenamiento de columnas
+                "info": true,     // Muestra información sobre la tabla
+                "searching": true // Activa el buscador
+            });
+        });
+    </script>
+</body>
+</html>

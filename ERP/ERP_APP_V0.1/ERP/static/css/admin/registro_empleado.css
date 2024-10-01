@@ -1,0 +1,192 @@
+/*--------------------------------------------------------------------------------*/
+/*-------------PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-----------------*/
+/*--------------------------------------------------------------------------------*/
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+header {
+    position: absolute;
+    display: flex; 
+    align-items: center; 
+    padding: 10px; 
+}
+
+header>a>img {
+    height: 50px;
+    margin-left: 20px;
+}
+
+header>h1 {
+    color: white;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header>a>h2 {
+    color: white;
+    position: absolute;
+    right: -1020px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+header>a>h2:hover {
+    color: rgb(228, 228, 228);
+}
+
+.slider {
+    background-color: #5ece31;
+    background-image: url(../../img/simple-header-blended-small.png);
+    height: 350px;
+    background-size: cover;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.slider>h1 {
+    color: white;
+    font-size: 80px;
+    width: 1000px;
+}
+
+footer {
+    height: 70px;
+    background-color: #5ece31;
+    color: white;
+    display: flex; /* Hacemos que el contenedor use flexbox */
+    align-items: center; /* Centramos verticalmente */
+}
+
+footer>p {
+    margin-left: 100px;
+    font-weight: 700;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*-------------FIN PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-------------*/
+/*--------------------------------------------------------------------------------*/
+.contendor_registro_empleados {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.contendor_registro_empleados>div {
+    height: 600px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    background-color: #5ece31;
+    border-radius: 20px;
+    margin-top: 50px;
+    color: white;
+}
+
+.contendor_registro_empleados>div:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.925);
+}
+
+.contendor_registro_empleados>div>form {
+    display: flex;
+    flex-direction: column; /* Esta regla CSS establece que los elementos directos (form) dentro de los elementos (div) dentro del contenedor con la clase "contenedor_panelAdmin" se organicen en una columna. Esto significa que los elementos dentro del formulario se apilen uno encima del otro. (es como una especie de display block) */
+    gap: 8px;
+    width: 300px;
+    margin-top: 15%;
+    margin-left: 6%;
+}
+
+input {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px
+}
+
+select {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px
+}
+
+.contendor_registro_empleados>div>h2 {
+    position: relative;
+    font-size: 15px;
+    width: 300px;
+    font-weight: 600;
+    top: 6%;
+    left: 6%;
+}
+
+#regritar_empleado, #editar_empleado, #eliminar_empleado{
+    margin-top: 15px;
+    background-color: #258c00;
+    font-size: 20px;
+    width: 300px;
+    color: white;
+    cursor: pointer;
+}
+
+#regritar_empleado:hover, #editar_empleado:hover, #eliminar_empleado:hover {
+    background-color: #a8da95;
+    color: #0d3100;
+}
+
+hr {
+    margin: 55px;
+    margin-bottom: 30px;
+    background-color: #0d310079;
+}
+
+.titulo_equipo_trabajo {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #0d3100;
+    font-size: 28px;
+}
+
+.contendor_empleados {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.contendor_empleados>div {
+    height: 500px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    background-color: #5ece31;
+    border-radius: 20px;
+    margin-top: 50px;
+    color: white;
+    margin-bottom: 50px;  
+}
+
+.contendor_empleados>div:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.925);
+}
+
+.contendor_empleados>div>img {
+    height: 300px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.contendor_empleados>div>h2 {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 28px;
+    margin-top: -5px;
+}
+
+.contendor_empleados>div>p {
+    margin-left: 25px;
+    margin-top: 8px;
+}

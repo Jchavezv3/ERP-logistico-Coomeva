@@ -1,0 +1,243 @@
+/*--------------------------------------------------------------------------------*/
+/*-------------PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-----------------*/
+/*--------------------------------------------------------------------------------*/
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+header {
+    position: absolute;
+    display: flex; 
+    align-items: center; 
+    padding: 10px; 
+}
+
+header>a>img {
+    height: 50px;
+    margin-left: 20px;
+}
+
+header>h1 {
+    color: white;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header>a>h2 {
+    color: white;
+    position: absolute;
+    right: -1020px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+header>a>h2:hover {
+    color: rgb(228, 228, 228);
+}
+
+.slider {
+    background-color: #5ece31;
+    background-image: url(../../img/simple-header-blended-small.png);
+    height: 350px;
+    background-size: cover;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.slider>h1 {
+    color: white;
+    font-size: 80px;
+    width: 1000px;
+}
+
+footer {
+    height: 70px;
+    background-color: #5ece31;
+    color: white;
+    display: flex; /* Hacemos que el contenedor use flexbox */
+    align-items: center; /* Centramos verticalmente */
+}
+
+footer>p {
+    margin-left: 100px;
+    font-weight: 700;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*-------------FIN PLANTILLA DE ESTILOS CSS GENERALES DEL ERP COOMEVA-------------*/
+/*--------------------------------------------------------------------------------*/
+
+.contendor_movimeintso_inventario {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.contendor_movimeintso_inventario>div {
+    height: 520px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    background-color: #5ece31;
+    border-radius: 20px;
+    margin-top: 50px;
+    color: white;
+}
+
+.contendor_movimeintso_inventario>div:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.925);
+}
+
+hr {
+    margin: 55px;
+    margin-bottom: 30px;
+    background-color: #0d310079;
+}
+
+.titulo_tabla_movimeintos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d3100;
+    font-size: 28px;
+}
+
+.contendor_movimeintso_inventario>div>form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 300px;
+    margin-top: 15%;
+    margin-left: 6%;
+}
+
+input {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px;
+}
+
+select {
+    border: 0px;
+    border-radius: 20px;
+    height: 35px;
+}
+
+#regritar_movimiento, #editar_movimiento, #eliminar_movimiento {
+    margin-top: 20px;
+    background-color: #258c00;
+    font-size: 20px;
+    width: 300px;
+    color: white;
+    cursor: pointer;
+}
+
+#regritar_movimiento:hover, #editar_movimiento:hover, #eliminar_movimiento:hover {
+    background-color: #a8da95;
+    color: #0d3100;
+}
+
+.contendor_movimeintso_inventario>div>h2 {
+    position: relative;
+    font-size: 15px;
+    width: 300px;
+    font-weight: 600;
+    top: 6%;
+    left: 6%;
+}
+
+#fecha_registro_movimiento {
+    border: 1px solid #0d3100;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+/*---------------------------------------------------------------------------------*/
+/*------------------------------ESTILOS DE LA TABLA--------------------------------*/
+/*---------------------------------------------------------------------------------*/
+.grupo_tabla_moviminetos {
+    background-color: #5ece31;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabla_moviminetos {
+    max-height: 350px;
+    width: 1200px; /* Ancho fijo de la tabla */
+    overflow-y: auto; /* Cambiado de scroll a auto */
+    overflow-x: auto; /* Cambiado de scroll a auto */
+    padding-right: 15px; /* Espacio extra para la barra de desplazamiento vertical */
+    padding-bottom: 15px; /* Espacio extra para la barra de desplazamiento horizontal */
+    box-sizing: content-box; /* Asegura que el padding no afecte al tamaño de la caja */
+}
+
+.tabla_moviminetos::-webkit-scrollbar {
+    width: 10px; /* Cambia el ancho del scroll */
+    height: 10px; /* Cambia la altura del scroll horizontal */
+}
+
+/* Parte de la barra de desplazamiento */
+.tabla_moviminetos::-webkit-scrollbar-thumb {
+    background-color: green; /* Color de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Parte de la pista de la barra de desplazamiento */
+.tabla_moviminetos::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de la pista de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+table {
+    width: 100%; /* Ocupa el ancho total del contenedor */
+    border: 1px solid #0d3100;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-collapse: collapse;
+    table-layout: auto; /* Ajusta automáticamente el ancho de las columnas */
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #79af64;
+    color: white;
+    white-space: nowrap; /* Evita el ajuste de texto */
+}
+
+td {
+    color: rgb(128, 128, 128);
+    font-size: 15px;
+    white-space: nowrap; /* Evita el ajuste de texto */
+}
+
+td:hover {
+    color: #0d3100;
+}
+
+table>thead>tr>th>select {
+    width: 80px;
+    height: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(232, 255, 223);
+}
+
+tr:hover {
+    background-color: #97d87d;
+    cursor: pointer; 
+}
+/*---------------------------------------------------------------------------------*/
+/*----------------------------FIN ESTILOS DE LA TABLA------------------------------*/
+/*---------------------------------------------------------------------------------*/
